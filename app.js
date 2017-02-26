@@ -32,6 +32,18 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+app.post('/login', function(req, res){
+
+    if(!req.body.username) res.status(400).send({error:"no username provided"});
+    if(!req.body.password) res.status(400).send({error:"no password provided"});
+
+    var username = req.body.username;
+    var password = req.body.password;
+
+
+});
+
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
