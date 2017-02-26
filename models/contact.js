@@ -5,13 +5,13 @@ var Contact = dynogels.define('Contact', {
   hashKey : 'UUID',
   schema : {
     UUID : dynogels.types.uuid(),
-    password : Joi.string().min(3).max(50),
-    emails: [Joi.string().email()],
+    emails: Joi.array().items(Joi.string().email()),
     name:{
     	first: Joi.string().regex(/^[a-zA-Z]+$/, {name: 'firstname'}).min(1).max(50),
     	last: Joi.string().regex(/^[a-zA-Z]+$/, {name: 'firstname'}).min(1).max(50)
     },
-    title: Joi.string().min(1).max(100)
+    title: Joi.string().min(1).max(100),
+    owner: Joi.string().min(3).max(50).required()
 
   }
 });
