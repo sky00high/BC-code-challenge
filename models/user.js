@@ -5,7 +5,7 @@ var User = dynogels.define('User', {
   hashKey : 'username',
   schema : {
     username : Joi.string().min(3).max(50),
-    password : Joi.string().min(3).max(50),
+    password : Joi.string().min(3).max(50).required(),
   }
 });
 
