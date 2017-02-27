@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var contacts = require('./routes/api/contacts');
 var app = express();
 
-var User = require('./models/User');
+var User = require('./models/user.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,11 +25,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(expressJWT({secret:'secret'}).unless({path:['/login']}));
+app.use(expressJWT({secret:'secret'}).unless({path:['/login', '/users']}));
 
 app.use('/users', users);
 app.use('/api/contacts', contacts);
 
+
+app.get("/", (req, res)=>{
+
+	res.status(200).send({
+		msg: "Welcome, this is the page for brightcrowd coding challenge",
+		resources:['/login', '/users', '/api/contacts'],
+		note: " you can GET on users to get current list of test users. You can post to users with json as body {username: username, password:password} to create new user"
+	});
+});
 app.post('/login', function(req, res){
 
 
