@@ -26,17 +26,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 app.use(expressJWT({secret:'secret'}).unless({path:['/login']}));
-
-
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/contacts', contacts);
-
-
-
 
 app.post('/login', function(req, res){
 
