@@ -1,6 +1,6 @@
 This is the submission from Tianyu Yang (ty2345@columbia.edu)
 
-This implementation on express framework and uses AWS dynamoDB. It is prepared and tested to be deployed on AWS ElasticBeanstalk. 
+This implementation on express framework and uses AWS dynamoDB. It is prepared and tested to be deployed on AWS ElasticBeanstalk. If you are too lazy to deploy yourself, use 
 
 This application is authenticated jusing jsonwebtoken(JWT). Users need to be authenticated by posting their username and password ({'username': 'jacky', 'password':'ps1'}) to /login and get the tokenAll the requests to /api/contacts require authentication requires a Authorization header whose value should be "Bearer YOURTOKENHERE".
 

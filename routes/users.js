@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user.js');
 /* GET users listing. */
-/*
+
 router.get('/', function(req, res, next) {
   User.scan().exec(function(err, resp){
   	if(err){
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
   });
 });
-*/
+
 router.post('/', function(req,res,next){
 	console.log(req.body);
 	User.create({
