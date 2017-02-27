@@ -5,10 +5,10 @@ var Contact = dynogels.define('Contact', {
   hashKey : 'UUID',
   schema : {
     UUID : dynogels.types.uuid(),
-    emails: Joi.array().items(Joi.string().email()),
+    emails: Joi.array().items(Joi.string().email()).required(),
     name:{
-    	first: Joi.string().regex(/^[a-zA-Z]+$/, {name: 'firstname'}).min(1).max(50),
-    	last: Joi.string().regex(/^[a-zA-Z]+$/, {name: 'firstname'}).min(1).max(50)
+    	first: Joi.string().regex(/^[a-zA-Z]+$/, {name: 'firstname'}).min(1).max(50).required(),
+    	last: Joi.string().regex(/^[a-zA-Z]+$/, {name: 'firstname'}).min(1).max(50).required()
     },
     title: Joi.string().min(1).max(100),
     owner: Joi.string().min(3).max(50).required()

@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
 var expressJWT = require('express-jwt');
 
-var index = require('./routes/index');
 var users = require('./routes/users');
 var contacts = require('./routes/api/contacts');
 var app = express();
@@ -28,20 +27,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(expressJWT({secret:'secret'}).unless({path:['/login']}));
 
-app.use('/', index);
 app.use('/users', users);
 app.use('/api/contacts', contacts);
 
 app.post('/login', function(req, res){
 
 
-	console.log("checkpoint");
     if(!req.body.username) res.status(400).send({error:"no username provided"});
     if(!req.body.password) res.status(400).send({error:"no password provided"});
 
     User.get(req.body.username, function(err, user){
     	if(err){
-    		console.log(err);
     		res.status(404).send(err);
     	} else{
 
@@ -63,6 +59,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

@@ -17,6 +17,5 @@ dynogels.createTables(function(err) {
     console.log('Tables has been created');
   }
 });
-console.log('user.js in module executed');
 
 module.exports = User;
